@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter_sanity/src/exception.dart';
+import 'package:flutter_sanity_client/src/exception.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
-import 'package:flutter_sanity/src/sanity_client.dart';
+import 'package:flutter_sanity_client/src/sanity_client.dart';
 
 void main() {
   late SanityClient client;
@@ -15,11 +15,13 @@ void main() {
         projectId: 'test',
         dataset: 'test',
         token: 'test',
+        apiVersion: 'test',
       );
 
       expect(client.dataset, 'test');
       expect(client.projectId, 'test');
       expect(client.token, 'test');
+      expect(client.apiVersion, 'test');
       expect(client.useCdn, true);
     });
 

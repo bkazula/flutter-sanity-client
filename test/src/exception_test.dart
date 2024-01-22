@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:flutter_sanity/src/exception.dart';
+import 'package:flutter_sanity_client/src/exception.dart';
 
 void main() {
   group('AppException', () {
