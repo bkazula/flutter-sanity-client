@@ -7,6 +7,6 @@ repository: https://github.com/joelrose/flutter_sanity
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
-  http: ^0.13.4
+  http: ^1.1.0
 dev_dependencies:
   test: ^1.20.2
