@@ -104,11 +104,12 @@ void main() {
       final queryParameter = {'query': 'test'};
       final projectId = 'test';
       final dataset = 'test';
+      final apiVersion = 'test_version';
 
       final mockHttpClient = MockClient((request) async {
         expect(request.url.scheme, 'https');
         expect(request.url.host, '$projectId.apicdn.sanity.io');
-        expect(request.url.path, '/v1/data/query/$dataset');
+        expect(request.url.path, '/$apiVersion/data/query/$dataset');
         expect(request.url.queryParameters,
             {...queryParameter, ...paramParameter});
 
@@ -119,6 +120,7 @@ void main() {
         projectId: projectId,
         dataset: dataset,
         client: mockHttpClient,
+        apiVersion: apiVersion,
       );
 
       await client.fetch(

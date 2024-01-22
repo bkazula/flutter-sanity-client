@@ -1,4 +1,4 @@
-import 'package:flutter_sanity/flutter_sanity.dart';
+import 'package:flutter_sanity_client/flutter_sanity_client.dart';
 
 void main() async {
   final sanityClient = SanityClient(

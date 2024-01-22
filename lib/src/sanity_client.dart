@@ -9,6 +9,7 @@ class SanityClient {
     required this.projectId,
     required this.dataset,
     this.token,
+    this.apiVersion = 'v2023-05-03',
     this.useCdn = true,
     http.BaseClient? client,
   }) {
@@ -31,6 +32,9 @@ class SanityClient {
   /// If not set, the client will not send the token in the header.
   final String? token;
 
+  /// Client's version
+  final String apiVersion;
+
   /// Builds a [Uri] for a sanity endpoint.
   Uri _buildUri(String query, {Map<String, dynamic>? params}) {
     final Map<String, dynamic> queryParameters = <String, dynamic>{
@@ -40,7 +44,7 @@ class SanityClient {
     return Uri(
       scheme: 'https',
       host: '$projectId.${useCdn ? 'apicdn' : 'api'}.sanity.io',
-      path: '/v1/data/query/$dataset',
+      path: '/$apiVersion/data/query/$dataset',
       queryParameters: queryParameters,
     );
   }
