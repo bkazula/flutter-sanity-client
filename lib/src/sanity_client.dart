@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_sanity/src/exception.dart';
-import 'package:flutter_sanity/src/http_client.dart';
+import 'package:flutter_sanity_client/src/exception.dart';
+import 'package:flutter_sanity_client/src/http_client.dart';
 import 'package:http/http.dart' as http;
 
 class SanityClient {
