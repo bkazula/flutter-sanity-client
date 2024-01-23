@@ -62,10 +62,10 @@ class SanityClient {
   ///
   /// Throws a [BadRequestException], [UnauthorizedException], [FetchDataException]
   /// in case the request did not succeed
-  dynamic _returnResponse(http.Response response) {
+  T _returnResponse<T>(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        return _decodeReponse(response.body);
+        return _decodeResponse<T>(response.body);
       case 400:
         throw BadRequestException(response.body);
       case 401:
@@ -82,10 +82,10 @@ class SanityClient {
   /// Decodes the Sanity response
   ///
   /// Throws a [FetchDataException] in case decoding the response fails.
-  dynamic _decodeReponse(String responseBody) {
+  T _decodeResponse<T>(String responseBody) {
     try {
       final responseJson = jsonDecode(responseBody);
-      return responseJson['result'];
+      return responseJson['result'] as T;
     } catch (exception) {
       throw FetchDataException('Error occured while decoding response');
     }
@@ -94,7 +94,7 @@ class SanityClient {
   /// Fetches the query from the Sanity API.
   ///
   /// Throws a [SanityException] in case  request fails.
-  Future<dynamic> fetch(String query, {Map<String, dynamic>? params}) async {
+  Future<T> fetch<T extends dynamic>(String query, {Map<String, dynamic>? params}) async {
     final Uri uri = _buildUri(query, params: params);
     final http.Response response = await _client.get(uri);
     return _returnResponse(response);
