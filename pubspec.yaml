@@ -7,6 +7,6 @@ repository: https://github.com/bkazula/flutter_sanity_client
 environment:
   sdk: ">=3.2.5 <4.0.0"
 dependencies:
-  http: ^1.1.0
+  http: ^1.3.0
 dev_dependencies:
   test: ^1.25.1
